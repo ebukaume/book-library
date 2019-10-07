@@ -6,14 +6,14 @@ const DELETE_COLOR = 'red darken-2'
 
 // App Logic
 
-function Book(title, author, pages, status='Unread') {
+function Book(title, author, pages, status = 'Unread') {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.status = status;
 }
 
-Book.prototype.toggleStatus = function() {
+Book.prototype.toggleStatus = function () {
     this.status = this.status == 'Unread' ? 'Read' : 'Unread';
 };
 
@@ -48,15 +48,15 @@ function render() {
 function renderBook(book, index) {
     let html = "<tr>";
     for (let data of BOOK_PROPERTIES) {
-        if (data == 'status'){
+        if (data == 'status') {
             status = book[data]
             color = status == 'Read' ? READ_COLOR : UNREAD_COLOR
             html += `<td><a class="update waves-effect waves-light btn ${color}" id=${index}>${status}</a></td>`
-        }else {
+        } else {
             html += `<td>${book[data]}</td>`;
         }
     }
-    
+
     delete_book_button = `<td><a class="delete waves-effect waves-light btn ${DELETE_COLOR}" id=${index}>Delete Book</a></td>`;
     return html + delete_book_button + "</tr>"
 }
@@ -90,8 +90,9 @@ function delteBookListener() {
 }
 
 function newBookListener() {
-    document.getElementById('new-book-btn').addEventListener("click", function (e) {
-        document.getElementById("new-book").classList.toggle("hide")
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
     });
 }
 
@@ -105,6 +106,12 @@ function submitFormListener() {
         form.reset();
         render();
     })
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    });
 }
 
 newBookListener()

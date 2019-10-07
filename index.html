@@ -26,32 +26,43 @@
     </div>
 
     <main class="container">
-        <div id="new-book" class="">
-            <form id="form" action="#">
-                <div>
-                    <label for="title">Title:</label>
-                    <input type="text" name="title" id="title" required>
-                </div>
-                <div>
-                    <label for="author">Author:</label>
-                    <input type="text" name="author" id="author" required>
-                </div>
-                <div>
-                    <label for="pages">Number of Pages:</label>
-                    <input type="number" name="pages" id="pages" required>
-                </div>
-                <div>
-                    <select id="read" required>
-                        <option value="Unread">Unread</option>
-                        <option value="Read">Read</option>
-                    </select>
-                    <label for="read">Status</label>
-                </div>
-                <button id="submit">Submit</button>
-            </form>
+        <div id="new-book" class="modal">
+            <div class="modal-content">
+                <form id="form" action="#">
+                    <div class="input-field">
+                        <label for="title">Title:</label>
+                        <input type="text" name="title" id="title" class="validate" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="author">Author:</label>
+                        <input type="text" name="author" id="author" class="validate" required>
+                    </div>
+                    <div class="input-field">
+                        <label for="pages">Number of Pages:</label>
+                        <input type="number" name="pages" id="pages" class="validate" required>
+                    </div>
+                    <div class="input-field">
+                        <select class="validate" required>
+                            <option value="Unread">Unread</option>
+                            <option value="Read">Read</option>
+                        </select>
+                        <label>Status</label>
+                    </div>
+                    <button id="submit" class="blue accent-4 modal-close btn waves-effect waves-light" type="submit"
+                        name="action">Submit
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </div>
         </div>
 
-        <a id="new-book-btn" class="btn-floating"> <i class="large material-icons">add_circle</i></a>
+        <!-- Modal Trigger -->
+        <div class="fixed-action-btn">
+            <button data-target="new-book"
+                class="blue accent-4 btn modal-trigger btn-floating btn-large waves-effect waves-light">
+                <i class="large material-icons">add</i>
+            </button>
+        </div>
 
         <table class="highlight centered">
             <thead>
