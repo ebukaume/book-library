@@ -96,7 +96,7 @@ function submitFormListener() {
   document.getElementById('submit').addEventListener('click', (e) => {
     e.preventDefault();
     const form = document.getElementById('form');
-    const values = [...form.elements].map((element) => element.value);
+    const values = [...form.elements].map(element => element.value);
     const book = new Book(...values);
     addBookToLibrary(book);
     form.reset();
