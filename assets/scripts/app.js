@@ -1,5 +1,8 @@
 const myLibrary = [];
 const BOOK_PROPERTIES = ['title', 'author', 'pages', 'status'];
+const READ_COLOR = 'blue accent-4'
+const UNREAD_COLOR = 'blue accent-1'
+const DELETE_COLOR = 'red darken-2'
 
 // App Logic
 
@@ -46,12 +49,15 @@ function renderBook(book, index) {
     let html = "<tr>";
     for (let data of BOOK_PROPERTIES) {
         if (data == 'status'){
-            html += `<td><button class='update' id=${index}>${book[data]}</button></td>`
+            status = book[data]
+            color = status == 'Read' ? READ_COLOR : UNREAD_COLOR
+            html += `<td><a class="update waves-effect waves-light btn ${color}" id=${index}>${status}</a></td>`
         }else {
             html += `<td>${book[data]}</td>`;
         }
     }
-    delete_book_button = `<td><button class='delete' id=${index}>Delete Book</button></td>`;
+    
+    delete_book_button = `<td><a class="delete waves-effect waves-light btn ${DELETE_COLOR}" id=${index}>Delete Book</a></td>`;
     return html + delete_book_button + "</tr>"
 }
 

@@ -1,13 +1,4 @@
-body {
-  margin: 0;
-}
-
-nav {
-  height: 20px;
-  background-color: red;
-}
-
-#new-book.hide {
-  display: none;
+nav a {
+  font-weight: bold;
 }
 /*# sourceMappingURL=main.css.map */

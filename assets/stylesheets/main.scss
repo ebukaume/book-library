@@ -1,14 +1,7 @@
-body{
-    margin: 0;
-}
+
 
 nav {
-    height: 20px;
-    background-color: red;
-}
-
-#new-book {
-    &.hide {
-        display: none;
+    a {
+        font-weight: bold;
     }
 }
