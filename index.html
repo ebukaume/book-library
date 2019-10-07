@@ -1,9 +1,17 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Book Library</title>
     <link rel="stylesheet" href="assets/stylesheets/main.css">
 </head>
@@ -25,18 +33,18 @@
                 <label for="pages">Number of Pages:</label>
                 <input type="number" name="pages" id="pages" required>
             </div>
-            <div >
-                    <select id="read" required>
-                        <option value="Unread">Unread</option>
-                        <option value="Read">Read</option>
-                    </select>
-                    <label for="read">Status</label>
-                </div>
+            <div>
+                <select id="read" required>
+                    <option value="Unread">Unread</option>
+                    <option value="Read">Read</option>
+                </select>
+                <label for="read">Status</label>
+            </div>
             <button id="submit">Submit</button>
         </form>
     </div>
 
-    <button id="add-book">Add Book</button>
+    <button id="new-book-btn">New Book</button>
 
 
     <table>
@@ -53,7 +61,10 @@
         </tbody>
     </table>
 
+    <!--JavaScript at end of body for optimized loading-->
     <script src="assets/scripts/app.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 
 </html>

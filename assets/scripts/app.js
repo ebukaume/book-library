@@ -83,8 +83,8 @@ function delteBookListener() {
     }
 }
 
-function addBookListener() {
-    document.getElementById('add-book').addEventListener("click", function (e) {
+function newBookListener() {
+    document.getElementById('new-book-btn').addEventListener("click", function (e) {
         document.getElementById("new-book").classList.toggle("hide")
     });
 }
@@ -101,7 +101,7 @@ function submitFormListener() {
     })
 }
 
-addBookListener()
+newBookListener()
 submitFormListener()
 
 render()
