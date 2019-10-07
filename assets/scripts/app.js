@@ -26,17 +26,18 @@ for (let i = 0; i < 10; i++) {
 
 function render() {
     let html = "";
-    for (let book of myLibrary) {
-        html += renderBook(book);
+    for (let bookIndex in myLibrary) {
+        html += renderBook(myLibrary[bookIndex], bookIndex);
     }
     document.getElementById('table').innerHTML = html;
 }
 
-function renderBook(book) {
+function renderBook(book, index) {
     let html = "<tr>";
     for (let data in book) {
         html += `<td>${book[data]}</td>`;
     }
+    html += `<td><button class='delete' data=${index}>Delete Book</button></td>`;
     return html + "</tr>"
 }
 
@@ -51,6 +52,17 @@ function listen(){
         e.preventDefault();
         submitBookData();
     })
+
+    const deleteButtons = document.getElementsByClassName("delete");
+
+    for(let button of deleteButtons) {
+        // book = getBookByIndex(button)
+        button.addEventListener("click", function() { deleteBookFromLibrary(button)});
+    }
+}
+
+function deleteBookFromLibrary(button) {
+    console.log(button.getAttributes
 }
 
 function submitBookData() {
@@ -58,8 +70,7 @@ function submitBookData() {
     values = [...form.elements].map(element => element.value)
     book = new Book(...values)
     addBookToLibrary(book);
-
-    console.log(book)
+    form.reset();
     render();
 }
 
