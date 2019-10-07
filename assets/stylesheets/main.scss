@@ -1,7 +1,17 @@
-
-
+.navbar-fixed{
+    margin-bottom: 2rem;
+}
 nav {
     a {
         font-weight: bold;
     }
+}
+
+main{
+    &.container {
+        max-width: 800px;
+    }
+}
+td {
+    width: 20%;
 }
