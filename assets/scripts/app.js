@@ -33,8 +33,21 @@ function render() {
 }
 
 function renderBook(book) {
-    return `<div>title: ${book.title} author: ${book.author} 
-    pages: ${book.pages} read: ${book.read}</div>`
+    let html = "<tr>";
+    for (let data in book) {
+        html += `<td>${book[data]}</td>`;
+    }
+    return html + "</tr>"
+}
+
+function listen(){
+    const addBook = document.getElementById('add-book');
+    addBook.addEventListener("click", function(e) {
+        document.getElementById("new-book").classList.toggle("hide")
+    })
 }
 
 render()
+listen()
+
+

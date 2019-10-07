@@ -1,1 +1,13 @@
-/* No CSS *//*# sourceMappingURL=main.css.map */
+body {
+  margin: 0;
+}
+
+nav {
+  height: 20px;
+  background-color: red;
+}
+
+#new-book.hide {
+  display: none;
+}
+/*# sourceMappingURL=main.css.map */
