@@ -3,15 +3,19 @@ const myLibrary = [];
 
 // App Logic
 
-function Book(title, author, pages, status) {
+function Book(title, author, pages, status='Unread') {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.status = Boolean(Number(status));
+    this.status = status;
 }
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
+}
+
+function updateBookStatus(book) {
+    book.status = book.status == 'Unread' ? 'Read' : 'Unread'
 }
 
 function deleteBookFromLibrary(bookIndex) {
@@ -41,17 +45,31 @@ function render() {
 function renderBook(book, index) {
     let html = "<tr>";
     for (let data in book) {
-        html += `<td>${book[data]}</td>`;
+        if (data == 'status'){
+            html += `<td><button class='update' id=${index}>${book.status}</button></td>`
+        }else {
+            html += `<td>${book[data]}</td>`;
+        }
     }
-    update_status_button = `<td><button class='update' id=${index}>update status</button></td>`;
     delete_book_button = `<td><button class='delete' id=${index}>Delete Book</button></td>`;
-    return html + update_status_button + delete_book_button + "</tr>"
+    return html + delete_book_button + "</tr>"
 }
 
 function bookListen() {
-    
+    updateStatusListener()
 
     delteBookListener()
+}
+
+function updateStatusListener() {
+    const updateButtons = document.getElementsByClassName("update");
+
+    for (let button of updateButtons) {
+        button.addEventListener("click", function () {
+            updateBookStatus(myLibrary[button.id])
+            render()
+        });
+    }
 }
 
 function delteBookListener() {
