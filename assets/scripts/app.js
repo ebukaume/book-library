@@ -1,5 +1,5 @@
 const myLibrary = [];
-
+const BOOK_PROPERTIES = ['title', 'author', 'pages', 'status'];
 
 // App Logic
 
@@ -10,12 +10,12 @@ function Book(title, author, pages, status='Unread') {
     this.status = status;
 }
 
+Book.prototype.toggleStatus = function() {
+    this.status = this.status == 'Unread' ? 'Read' : 'Unread';
+};
+
 function addBookToLibrary(book) {
     myLibrary.push(book);
-}
-
-function updateBookStatus(book) {
-    book.status = book.status == 'Unread' ? 'Read' : 'Unread'
 }
 
 function deleteBookFromLibrary(bookIndex) {
@@ -44,9 +44,9 @@ function render() {
 
 function renderBook(book, index) {
     let html = "<tr>";
-    for (let data in book) {
+    for (let data of BOOK_PROPERTIES) {
         if (data == 'status'){
-            html += `<td><button class='update' id=${index}>${book.status}</button></td>`
+            html += `<td><button class='update' id=${index}>${book[data]}</button></td>`
         }else {
             html += `<td>${book[data]}</td>`;
         }
@@ -66,7 +66,7 @@ function updateStatusListener() {
 
     for (let button of updateButtons) {
         button.addEventListener("click", function () {
-            updateBookStatus(myLibrary[button.id])
+            myLibrary[button.id].toggleStatus();
             render()
         });
     }
