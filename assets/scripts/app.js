@@ -3,15 +3,19 @@ const myLibrary = [];
 
 // App Logic
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, status) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read =Boolean(Number(read));
+    this.status = Boolean(Number(status));
 }
 
 function addBookToLibrary(book) {
     myLibrary.push(book);
+}
+
+function deleteBookFromLibrary(bookIndex) {
+    myLibrary.splice(bookIndex, 1)
 }
 
 // populate temporarily
@@ -30,6 +34,8 @@ function render() {
         html += renderBook(myLibrary[bookIndex], bookIndex);
     }
     document.getElementById('table').innerHTML = html;
+
+    listen()
 }
 
 function renderBook(book, index) {
@@ -37,44 +43,47 @@ function renderBook(book, index) {
     for (let data in book) {
         html += `<td>${book[data]}</td>`;
     }
-    html += `<td><button class='delete' data=${index}>Delete Book</button></td>`;
-    return html + "</tr>"
+    update_status_button = `<td><button class='update' id=${index}>update status</button></td>`;
+    delete_book_button = `<td><button class='delete' id=${index}>Delete Book</button></td>`;
+    return html + update_status_button + delete_book_button + "</tr>"
 }
 
-function listen(){
-    const addBook = document.getElementById('add-book');
-    addBook.addEventListener("click", function(e) {
+function listen() {
+    addBookListener()
+
+    submitFormListener()
+
+    delteBookListener()
+
+}
+
+function addBookListener() {
+    document.getElementById('add-book').addEventListener("click", function (e) {
         document.getElementById("new-book").classList.toggle("hide")
     });
+}
 
-    const sumbitListner = document.getElementById("submit");
-    sumbitListner.addEventListener("click", function(e) {
+function submitFormListener() {
+    document.getElementById("submit").addEventListener("click", function (e) {
         e.preventDefault();
-        submitBookData();
+        form = document.getElementById('form')
+        values = [...form.elements].map(element => element.value)
+        book = new Book(...values)
+        addBookToLibrary(book);
+        form.reset();
+        render();
     })
+}
 
+function delteBookListener() {
     const deleteButtons = document.getElementsByClassName("delete");
 
-    for(let button of deleteButtons) {
-        // book = getBookByIndex(button)
-        button.addEventListener("click", function() { deleteBookFromLibrary(button)});
+    for (let button of deleteButtons) {
+        button.addEventListener("click", function () {
+            deleteBookFromLibrary(button.id)
+            render()
+        });
     }
 }
 
-function deleteBookFromLibrary(button) {
-    console.log(button.getAttributes
-}
-
-function submitBookData() {
-    form = document.getElementById('form')
-    values = [...form.elements].map(element => element.value)
-    book = new Book(...values)
-    addBookToLibrary(book);
-    form.reset();
-    render();
-}
-
 render()
-listen()
-
-
