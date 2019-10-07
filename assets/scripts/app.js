@@ -44,7 +44,22 @@ function listen(){
     const addBook = document.getElementById('add-book');
     addBook.addEventListener("click", function(e) {
         document.getElementById("new-book").classList.toggle("hide")
+    });
+
+    const sumbitListner = document.getElementById("submit");
+    sumbitListner.addEventListener("click", function(e) {
+        e.preventDefault();
+        submitBookData();
     })
+}
+
+function submitBookData() {
+    title = document.getElementById("title").value;
+    author = document.getElementById("author").value;
+    pages = document.getElementById("pages").value;
+    
+    addBookToLibrary(new Book(title, author, pages));
+    render();
 }
 
 render()
