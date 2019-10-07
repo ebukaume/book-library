@@ -35,7 +35,7 @@ function render() {
     }
     document.getElementById('table').innerHTML = html;
 
-    listen()
+    bookListen()
 }
 
 function renderBook(book, index) {
@@ -48,13 +48,21 @@ function renderBook(book, index) {
     return html + update_status_button + delete_book_button + "</tr>"
 }
 
-function listen() {
-    addBookListener()
-
-    submitFormListener()
+function bookListen() {
+    
 
     delteBookListener()
+}
 
+function delteBookListener() {
+    const deleteButtons = document.getElementsByClassName("delete");
+
+    for (let button of deleteButtons) {
+        button.addEventListener("click", function () {
+            deleteBookFromLibrary(button.id)
+            render()
+        });
+    }
 }
 
 function addBookListener() {
@@ -75,15 +83,7 @@ function submitFormListener() {
     })
 }
 
-function delteBookListener() {
-    const deleteButtons = document.getElementsByClassName("delete");
-
-    for (let button of deleteButtons) {
-        button.addEventListener("click", function () {
-            deleteBookFromLibrary(button.id)
-            render()
-        });
-    }
-}
+addBookListener()
+submitFormListener()
 
 render()
