@@ -12,19 +12,26 @@
     <nav> Book Library </nav>
 
     <div id="new-book" class="hide">
-        <form action="#">
+        <form id="form" action="#">
             <div>
                 <label for="title">Title:</label>
-                <input type="text" name="title" id="title">
+                <input type="text" name="title" id="title" required>
             </div>
             <div>
                 <label for="author">Author:</label>
-                <input type="text" name="author" id="author">
+                <input type="text" name="author" id="author" required>
             </div>
             <div>
                 <label for="pages">Number of Pages:</label>
-                <input type="number" name="pages" id="pages">
+                <input type="number" name="pages" id="pages" required>
             </div>
+            <div >
+                    <select id="read" required>
+                        <option value="0">Unread</option>
+                        <option value="1">Read</option>
+                    </select>
+                    <label for="read">Status</label>
+                </div>
             <button id="submit">Submit</button>
         </form>
     </div>

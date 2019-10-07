@@ -3,11 +3,11 @@ const myLibrary = [];
 
 // App Logic
 
-function Book(title, author, pages, read = false) {
+function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = read;
+    this.read =Boolean(Number(read));
 }
 
 function addBookToLibrary(book) {
@@ -54,11 +54,12 @@ function listen(){
 }
 
 function submitBookData() {
-    title = document.getElementById("title").value;
-    author = document.getElementById("author").value;
-    pages = document.getElementById("pages").value;
-    
-    addBookToLibrary(new Book(title, author, pages));
+    form = document.getElementById('form')
+    values = [...form.elements].map(element => element.value)
+    book = new Book(...values)
+    addBookToLibrary(book);
+
+    console.log(book)
     render();
 }
 
