@@ -1,2 +1,3 @@
 # book-library
-Simple library in Javascript 
+
+Simple library in Javascript
