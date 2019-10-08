@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable arrow-parens */
 const myLibrary = [];
 const BOOK_PROPERTIES = ['title', 'author', 'pages', 'status'];
 const READ_COLOR = 'blue accent-4';
@@ -56,7 +58,6 @@ function render() {
   }
   document.getElementById('table').innerHTML = html;
 
-  // eslint-disable-next-line no-use-before-define
   bookListen();
 }
 
@@ -97,7 +98,7 @@ function submitFormListener() {
   const form = document.getElementById('form');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const values = [...form.elements].map((element) => element.value);
+    const values = [...form.elements].map(element => element.value);
     addBookToLibrary(new Book(...values));
     form.reset();
     // eslint-disable-next-line no-undef
