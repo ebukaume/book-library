@@ -1,12 +1,10 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable arrow-parens */
 const READ_COLOR = 'blue accent-4';
 const UNREAD_COLOR = 'blue accent-1';
 const DELETE_COLOR = 'red darken-2';
 
-// App Logic
 const myLibrary = [];
 const BOOK_PROPERTIES = ['title', 'author', 'pages', 'status'];
+
 function Book(title, author, pages, status = 'Unread') {
   this.title = title;
   this.author = author;
@@ -14,22 +12,46 @@ function Book(title, author, pages, status = 'Unread') {
   this.status = status;
 }
 
-Book.prototype.toggleStatus = function toggleStatus() {
-  this.status = this.status === 'Unread' ? 'Read' : 'Unread';
+// local storage
+
+const populateLocalstorage = () => {
+  const tmp = [];
+  tmp.push(new Book('The Denial of Death', 'Ernest Becker', 336, 'Read'));
+  tmp.push(new Book('Meditations', 'Marcus Aurelius', 200));
+  localStorage.myLibrary = JSON.stringify(tmp);
 };
 
+if (!localStorage.getItem('myLibrary')) {
+  populateLocalstorage();
+}
+
+const storeLocal = () => {
+  localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+};
+
+const fetchLocal = () => {
+  JSON.parse(localStorage.myLibrary).forEach((bookDetails) => {
+    myLibrary.push(new Book(...Object.values(bookDetails)));
+  });
+};
+
+// App Logic
+
+fetchLocal();
+
+Book.prototype.toggleStatus = function toggleStatus() {
+  this.status = this.status === 'Unread' ? 'Read' : 'Unread';
+  storeLocal();
+};
 
 const addBookToLibrary = (book) => {
   myLibrary.push(book);
+  storeLocal();
 };
 const deleteBookFromLibrary = (bookIndex) => {
   myLibrary.splice(bookIndex, 1);
+  storeLocal();
 };
-// populate temporarily
-
-addBookToLibrary(new Book('The Denial of Death', 'Ernest Becker', 336, 'Read'));
-addBookToLibrary(new Book('Meditations', 'Marcus Aurelius', 200));
-
 
 // Dom Manipulation
 
@@ -55,7 +77,7 @@ const render = () => {
     html += renderBook(myLibrary[i], i);
   }
   document.getElementById('table').innerHTML = html;
-
+  // eslint-disable-next-line no-use-before-define
   bookListen();
 };
 
