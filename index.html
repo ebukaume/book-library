@@ -26,31 +26,35 @@
     </div>
 
     <main class="container">
+
+        <!-- Modal -->
         <div id="new-book" class="modal">
             <div class="modal-content">
                 <form id="form" action="#">
                     <div class="input-field">
                         <label for="title">Title:</label>
-                        <input type="text" name="title" id="title" class="validate" required>
+                        <input type="text" name="title" id="title" class="validate" required="" aria-required="true">
                     </div>
                     <div class="input-field">
                         <label for="author">Author:</label>
-                        <input type="text" name="author" id="author" class="validate" required>
+                        <input type="text" name="author" id="author" class="validate" required="" aria-required="true">
                     </div>
                     <div class="input-field">
                         <label for="pages">Number of Pages:</label>
-                        <input type="number" name="pages" id="pages" class="validate" required>
+                        <input type="number" name="pages" id="pages" class="validate" required="" aria-required="true">
                     </div>
                     <div class="input-field">
-                        <select class="validate" required>
+                        <select required="" aria-required="true">
                             <option value="Unread">Unread</option>
                             <option value="Read">Read</option>
                         </select>
                         <label>Status</label>
                     </div>
-                    <button id="submit" class="blue accent-4 modal-close btn waves-effect waves-light" type="submit"
-                        name="action">Submit
+                    <button id="submit" class="blue accent-4 modal-action btn waves-effect waves-light" type="submit"
+                        name="action">
+                        Submit
                         <i class="material-icons right">send</i>
+
                     </button>
                 </form>
             </div>
@@ -64,6 +68,7 @@
             </button>
         </div>
 
+        <!-- Table -->
         <table class="highlight centered">
             <thead>
                 <tr>

@@ -12,6 +12,7 @@ function Book(title, author, pages, status = 'Unread') {
   this.pages = pages;
   this.status = status;
 }
+
 Book.prototype.toggleStatus = function toggleStatus() {
   this.status = this.status === 'Unread' ? 'Read' : 'Unread';
 };
@@ -23,13 +24,13 @@ function addBookToLibrary(book) {
 function deleteBookFromLibrary(bookIndex) {
   myLibrary.splice(bookIndex, 1);
 }
+
 // populate temporarily
 
-for (let i = 0; i < 10; i += 1) {
-  const pages = [121, 232, 100, 200, 1342, 141, 3141, 123, 100, 109];
-  const book = new Book(`title ${i}`, `author ${i}`, pages[i]);
-  addBookToLibrary(book);
-}
+addBookToLibrary(new Book('The Denial of Death', 'Ernest Becker', 336, 'Read'));
+addBookToLibrary(new Book('Meditations', 'Marcus Aurelius', 200));
+
+
 // Dom Manipulation
 
 function renderBook(book, index) {
@@ -93,13 +94,14 @@ function newBookListener() {
 }
 
 function submitFormListener() {
-  document.getElementById('submit').addEventListener('click', (e) => {
+  const form = document.getElementById('form');
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const form = document.getElementById('form');
-    const values = [...form.elements].map(element => element.value);
-    const book = new Book(...values);
-    addBookToLibrary(book);
+    const values = [...form.elements].map((element) => element.value);
+    addBookToLibrary(new Book(...values));
     form.reset();
+    // eslint-disable-next-line no-undef
+    M.Modal.getInstance(document.getElementById('new-book')).close();
     render();
   });
 
