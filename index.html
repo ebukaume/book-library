@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Book Library</title>
+    <link rel="stylesheet" href="assets/stylesheets/main.css">
+</head>
+
+<body>
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper blue accent-4">
+                <a href="#" class="brand-logo center ">Book Library</a>
+            </div>
+        </nav>
+    </div>
+
+    <main class="container">
+
+        <!-- Modal -->
+        <div id="new-book" class="modal">
+            <div class="modal-content">
+                <form id="form" action="#">
+                    <div class="input-field">
+                        <label for="title">Title:</label>
+                        <input type="text" name="title" id="title" class="validate" required="" aria-required="true">
+                    </div>
+                    <div class="input-field">
+                        <label for="author">Author:</label>
+                        <input type="text" name="author" id="author" class="validate" required="" aria-required="true">
+                    </div>
+                    <div class="input-field">
+                        <label for="pages">Number of Pages:</label>
+                        <input type="number" name="pages" id="pages" class="validate" required="" aria-required="true">
+                    </div>
+                    <div class="input-field">
+                        <select >
+                            <option value="Unread">Unread</option>
+                            <option value="Read">Read</option>
+                        </select>
+                        <label>Status</label>
+                    </div>
+                    <button id="submit" class="blue accent-4 modal-action btn waves-effect waves-light" type="submit"
+                        name="action">
+                        Submit
+                        <i class="material-icons right">send</i>
+
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal Trigger -->
+        <div class="fixed-action-btn">
+            <button data-target="new-book"
+                class="blue accent-4 btn modal-trigger btn-floating btn-large waves-effect waves-light">
+                <i class="large material-icons">add</i>
+            </button>
+        </div>
+
+        <!-- Table -->
+        <table class="highlight centered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id='table'>
+
+            </tbody>
+        </table>
+    </main>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="assets/scripts/app.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+
+</html>
