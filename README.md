@@ -12,7 +12,7 @@ Book Library is a collaborative project by [Ar Nazeh](https://github.com/Nazeh) 
 
 ## Usage
 
-The live version of the webapp can be found [here](https://raw.githack.com/Nazeh/book-library/library/index.html)
+The live version of the webapp can be found [here](https://raw.githack.com/Nazeh/book-library/master/index.html)
 
 > Clone the repository to your local machine
 
