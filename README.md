@@ -1,4 +1,29 @@
-# Book Library
+<h1 align="center">Book Library</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/ebukaume/book-library#readme" target="_blank">
+    <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
+  </a>
+  <a href="https://github.com/ebukaume/book-library/graphs/commit-activity" target="_blank">
+    <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
+  </a>
+  <a href="https://github.com/ebukaume/book-library/blob/master/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/github/license/ebukaume/book-library" />
+  </a>
+  <a href="https://twitter.com/ebukaume" target="_blank">
+    <img alt="Twitter: ebukaume" src="https://img.shields.io/twitter/follow/ebukaume.svg?style=social" />
+  </a>
+</p>
+
+<br>
+
+<p>
+  <a href="https://nazeh.github.io/book-library/" target="_blank">
+    <img alt="Website" src="./docs/book_library.png" />
+  </a>
+</p>
+
+<br>
 
 This project is part of a series of projects to be completed by students of [Microverse](https://www.microverse.org/ "The Global School for Remote Software Developers!").
 
@@ -39,3 +64,8 @@ $ cd book-library
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details
+
+## Contact me
+
+I am looking for my next opportunity. Reach out to me if you are looking to hire!
+_ebukaume@gmail.com_
